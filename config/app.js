@@ -6,8 +6,10 @@
 // Enable packages here
 
 var packages = [
-	'auth',
-	'reference'
+	// 'auth',
+	'reference',
+	'eis',
+	'timelog'
 ];
 
 packages.push(process.env.APP_PERSISTENCE);
