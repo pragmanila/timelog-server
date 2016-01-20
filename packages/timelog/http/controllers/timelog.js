@@ -14,6 +14,8 @@ function Timelog(request, response) {
 			}
 			else {
 
+				self.response.send({'status':'okay'});
+
 				var employee = loadModel(['eis', 'employee']);
 				
 				employee.id(self.request.params.employee_code, function(result, err) {
@@ -54,8 +56,6 @@ function Timelog(request, response) {
 					}
 
 				});
-
-				
 
 			}
 		});
