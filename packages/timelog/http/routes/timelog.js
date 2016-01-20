@@ -31,7 +31,8 @@ module.exports = [
 		},
 		
 		'binding'	: {
-			'action'	 : 'create',
+			'controller' : ['timelog', 'timelog'],
+			'action'	 : 'createandlog',
 			'model'		 : ['timelog', 'timelog']
 		},
 
