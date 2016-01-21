@@ -25,6 +25,7 @@ function Timelog(request, response) {
 					if(isEmpty(err)) {
 
 						// Upload image to dropbox
+						var name = result.first_name + ' ' + result.last_name;
 						var dataurl = self.request.params.image;
 						var http = require("https");
 
@@ -78,7 +79,6 @@ function Timelog(request, response) {
 								self.model.update(logid, {'image':image_url}, function(result, err) {});
 
 								// Notify slack
-								var name = result.first_name + ' ' + result.last_name;
 								var options = {
 								  "method": "POST",
 								  "hostname": "hooks.slack.com",
