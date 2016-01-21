@@ -75,8 +75,8 @@ function Timelog(request, response) {
 							    
 							    // Update log entry with remote image url
 							    var image_url = result.url;
-							    var log = loadModel(['timelog', 'timelog']);
-								self.model.update(logid, {'image':image_url}, function(result, err) {});
+							    // var log = loadModel(['timelog', 'timelog']);
+								// self.model.update(logid, {'image':image_url}, function(result, err) {});
 
 								// Notify slack
 								var options = {
