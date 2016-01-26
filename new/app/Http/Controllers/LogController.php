@@ -15,6 +15,8 @@ class LogController extends Controller
     public function log(Request $request, $code)
     {
 
+        header('Access-Control-Allow-Origin:*');
+
         # Check if there is a running log
         $current = Log::where('employee_code', $code)->where('image_out', '')->first();
         $image = $request->get('image');
