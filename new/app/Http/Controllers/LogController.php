@@ -42,4 +42,10 @@ class LogController extends Controller
     
     }
 
+    public function test(Request $request, $code)
+    {
+        header('Access-Control-Allow-Origin:*');
+        return 'ok';
+    }
+
 }
