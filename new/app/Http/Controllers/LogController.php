@@ -22,7 +22,7 @@ class LogController extends Controller
 
             # Create time in
             $log = new Log(['image_in' => $image]);
-            Employee::find($code)->logs()->save($log);
+            Employee::where('code', $code)->first()->logs()->save($log);
 
             $notifier->in($log);
         

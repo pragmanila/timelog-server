@@ -26,7 +26,7 @@ class Slack implements \App\Services\Contracts\NotifierContract
 	private function getEmployeeName($code)
 	{
 
-		$employee = Employee::find($code)->first();
+		$employee = Employee::where('code', $code)->first();
 		return $employee->first_name . ' ' . $employee->last_name;
 
 	}
