@@ -53,7 +53,7 @@ function Timelog(request, response) {
 						    
 						    // share image
 							var options = {
-							  "method": "GET",
+							  "method": "GET",d
 							  "hostname": "api.dropboxapi.com",
 							  "port": null,
 							  "path": "/1/media/auto/public/"+logid+".jpg",
