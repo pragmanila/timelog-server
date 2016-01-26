@@ -1,4 +1,4 @@
 <?php
 
 $app->get('employee/{code}', 'EmployeeController@get');
-$app->post('log/{code}', 'LogController@log');
+$app->post('employee/{code}/log', 'LogController@log');
