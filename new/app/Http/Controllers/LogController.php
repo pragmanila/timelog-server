@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\Contracts\NotifierContract as Notifier;
 
 use App\Models\Employee;
 use App\Models\Log;
 
+use App\Jobs\NotifyJob;
+
 class LogController extends Controller
 {
    
-    public function log(Request $request, Notifier $notifier, $code)
+    public function log(Request $request, $code)
     {
 
         # Check if there is a running log
@@ -23,8 +24,6 @@ class LogController extends Controller
             # Create time in
             $log = new Log(['image_in' => $image]);
             Employee::where('code', $code)->first()->logs()->save($log);
-
-            $notifier->in($log);
         
         }
         else {
@@ -34,10 +33,9 @@ class LogController extends Controller
             $log->image_out = $image; 
             $log->save();
 
-            $notifier->out($log);
-
         }
 
+        $this->dispatch(new NotifyJob($log));
         return $log;
     
     }

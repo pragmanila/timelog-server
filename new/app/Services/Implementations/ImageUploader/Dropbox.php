@@ -14,6 +14,7 @@ class Dropbox implements \App\Services\Contracts\ImageUploaderContract
 	public function upload($filename, $data) {
 
 		$curl = curl_init();
+
 		curl_setopt_array($curl, [
 			CURLOPT_URL => "https://api.dropboxapi.com/1/save_url/auto/public/".$filename,
 			CURLOPT_RETURNTRANSFER => true,
@@ -30,23 +31,8 @@ class Dropbox implements \App\Services\Contracts\ImageUploaderContract
 		$response = curl_exec($curl);
 		$err = curl_error($curl);
 		curl_close($curl);
-
-		$curl = curl_init();
-		curl_setopt_array($curl, [
-			CURLOPT_URL => "https://api.dropboxapi.com/1/media/auto/public/".$filename,
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_HTTPHEADER => [
-					"authorization: Bearer " . $this->auth
-				]
-			]
-		);
-
-		$response = curl_exec($curl);
-		$err = curl_error($curl);
-		curl_close($curl);
-
-		$data = json_decode($response);
-		return $data->url;
+		
+		return 'https://dl.dropboxusercontent.com/u/15296423/'.$filename;
 
 	}
 
