@@ -12,7 +12,7 @@ class EmployeeController extends Controller
 
     	header('Access-Control-Allow-Origin:*');
 
-        return Employee::where('code', $code)->first();
+        return Employee::where('code', $code)->firstOrFail();
     
     }
 
