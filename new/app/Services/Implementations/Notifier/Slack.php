@@ -9,7 +9,7 @@ class Slack implements \App\Services\Contracts\NotifierContract
 	{
 
 		$uploader = app()->make('App\Services\Contracts\ImageUploaderContract');
-		$image_url = $uploader->upload($log->employee_code.'-in-'.time().'.jpg', $log->image_in);
+		$image_url = $uploader->upload($log->employee_code.'-in-'.time().'.png', $log->image_in);
 		$this->request('in', $this->getEmployeeName($log->employee_code), $image_url);
 
 	}
@@ -18,7 +18,7 @@ class Slack implements \App\Services\Contracts\NotifierContract
 	{
 
 		$uploader = app()->make('App\Services\Contracts\ImageUploaderContract');
-		$image_url = $uploader->upload($log->employee_code.'-out-'.time().'.jpg', $log->image_out);
+		$image_url = $uploader->upload($log->employee_code.'-out-'.time().'.png', $log->image_out);
 		$this->request('out', $this->getEmployeeName($log->employee_code), $image_url);
 		
 	}
